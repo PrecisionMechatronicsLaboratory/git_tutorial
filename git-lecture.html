@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Git Quick Start</title>
+<meta name="author" content="(Thomas Dehaeze)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/solarized.css" id="theme"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Git Quick Start</h1><h2 class="author">Thomas Dehaeze</h2><p class="date">Created: 2018-11-28 mer. 22:22</p>
+</section>
+
+<section>
+<section id="slide-org8c28a1a">
+<h2 id="org8c28a1a">Why use version control software?</h2>
+<img class="stretch" src="figures/phd101212s_2018-11-28_21-45-04.png">
+
+</section>
+</section>
+<section>
+<section id="slide-org4e8c6e1">
+<h2 id="org4e8c6e1">What is Git ?</h2>
+<p>
+Git is a <b>version control system</b> developed by Linus Torvalds in 2005.
+</p>
+
+<ul>
+<li>It helps you manage the changes of your code over time</li>
+<li>It <b>keeps track of every modification of your code over time</b></li>
+<li>If a mistake is made, you can always compare with an earlier version of the code and fix the mistake</li>
+<li>It also <b>permits multiple people working on the same files at the same time</b></li>
+
+</ul>
+
+</section>
+<section >
+
+<img class="stretch" src="figures/tRfgX_2018-11-28_21-23-44.png">
+
+</section>
+</section>
+<section>
+<section id="slide-orga3ef3d5">
+<h2 id="orga3ef3d5">Central Repository</h2>
+<p>
+Repositories are where your code is stored online. These repositories can be private or public.
+</p>
+
+<p>
+You can use some free services to store your git repositories: <a href="https://about.gitlab.com/">Gitlab</a> and <a href="https://bitbucket.org/">Bitbucket</a> (free public and private repositories), <a href="https://desktop.github.com/">Github</a> (free public and paying private repositories).
+</p>
+
+<p>
+You can even store your repositories on your own server (a NAS for instance).
+</p>
+
+</section>
+<section id="slide-org573ebd2">
+<h3 id="org573ebd2">Private repositories with Github</h3>
+<p>
+Go on <a href="https://github.com/new">github</a> and create an account.
+</p>
+
+<p>
+If you want to have private repositories, you can ask for a free student pack <a href="https://education.github.com/pack">here</a> using your ulg/ulb account.
+</p>
+
+<p>
+Create a repository <a href="https://github.com/new">here</a> and choose it to be private. That way only thoose that are invited to collaborate with you will see this repository.
+</p>
+
+</section>
+<section id="slide-org9c25be7">
+<h3 id="org9c25be7">Public repositories for the PML team</h3>
+<p>
+All the repositories shared with the PML members should appear <a href="https://github.com/PrecisionMechatronicsLaboratory">here</a>.
+</p>
+
+<p>
+You can clone them to your own computer, work with the files and push your changes to the online repository.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org9e2ff30">
+<h2 id="org9e2ff30">How to install Git?</h2>
+<div class="outline-text-2" id="text-org9e2ff30">
+</div>
+</section>
+<section id="slide-org62f4c0d">
+<h3 id="org62f4c0d">3 options</h3>
+<ul>
+<li>with the <b>command line</b> =&gt; you have to install git <a href="https://git-scm.com/">here</a></li>
+<li>with a <b>graphical software</b> =&gt; <a href="https://desktop.github.com/">Github Desktop</a> is a good option</li>
+<li><b>directly on Matlab</b> =&gt; you still need to install git <a href="https://git-scm.com/">here</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orgbcce8ab">
+<h3 id="orgbcce8ab">Github Desktop Setup</h3>
+<p>
+Download the git software <a href="https://desktop.github.com/">here</a>.
+</p>
+
+<p>
+Run the software, login to your github account and you should be good to go.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0b9bbc7">
+<h2 id="org0b9bbc7">How does git works?</h2>
+<div class="outline-text-2" id="text-org0b9bbc7">
+</div>
+</section>
+<section id="slide-org80b33a8">
+<h3 id="org80b33a8">Commit / Working directory / Staging Area</h3>
+
+<div class="figure">
+<p><img src="figures/areas_2018-11-28_22-15-00.png" alt="areas_2018-11-28_22-15-00.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+
+<div class="figure">
+<p><img src="figures/lifecycle_2018-11-28_22-15-58.png" alt="lifecycle_2018-11-28_22-15-58.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4a74770">
+<h3 id="org4a74770">Repository / Push / Pull</h3>
+
+<div class="figure">
+<p><img src="figures/centralized_workflow_2018-11-28_22-17-15.png" alt="centralized_workflow_2018-11-28_22-17-15.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5ac5bf7">
+<h2 id="org5ac5bf7">Tips</h2>
+<ul>
+<li><code>Readme.md</code> file</li>
+<li><code>.gitignore</code> file
+<ul>
+<li>For <a href="https://github.com/github/gitignore/blob/master/Global/Matlab.gitignore">Matlab</a></li>
+<li>For <a href="https://github.com/github/gitignore/blob/master/TeX.gitignore">LaTeX</a></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8dd7319">
+<h2 id="org8dd7319">Workflow</h2>
+<div class="outline-text-2" id="text-org8dd7319">
+</div>
+</section>
+<section id="slide-orgb1ab793">
+<h3 id="orgb1ab793">Add one of you folder to</h3>
+
+</section>
+<section id="slide-org73ff58a">
+<h3 id="org73ff58a">Use of branches</h3>
+
+</section>
+<section id="slide-orgb039d5d">
+<h3 id="orgb039d5d">Managing Conflics</h3>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb864b83">
+<h2 id="orgb864b83">Using git with the command line</h2>
+<p>
+This is based on the following website:
+<a href="http://rogerdudler.github.io/git-guide/">http://rogerdudler.github.io/git-guide/</a>
+</p>
+
+</section>
+<section id="slide-org95f9db4">
+<h3 id="org95f9db4">Create a new repository</h3>
+<p>
+Create a new directory, open it and perform a
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git init
+</code></pre>
+</div>
+<p>
+to create a new git repository.
+</p>
+
+</section>
+<section id="slide-org21e9e6c">
+<h3 id="org21e9e6c">Checkout a repository</h3>
+<p>
+Create a working copy of a remote repository by running the command
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git clone http://github.com/username/repository-name
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org2bd78dc">
+<h3 id="org2bd78dc">Workflow</h3>
+<p>
+Your local repository consists of three "trees" maintained by git. the first one is your Working Directory which holds the actual files. the second one is the Index which acts as a staging area and finally the HEAD which points to the last commit you've made.
+</p>
+
+
+<div class="figure">
+<p><img src="./figures/trees.png" alt="trees.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org6164cee">
+<h3 id="org6164cee">Add &amp; commit</h3>
+<p>
+You can propose changes (add it to the <b>Index</b>) using
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" ># To add one particular file
+git add filename
+# To add everything
+git add *
+</code></pre>
+</div>
+<p>
+This is the first step in the basic git workflow. To actually commit these changes use
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git commit -m "Commit message"
+</code></pre>
+</div>
+<p>
+Now the file is committed to the <b>HEAD</b>, but not in your remote repository yet.
+</p>
+
+</section>
+<section id="slide-org72c46ac">
+<h3 id="org72c46ac">Pushing changes</h3>
+<p>
+Your changes are now in the <b>HEAD</b> of your local working copy.
+To send those changes to your remote repository, execute
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git push origin master
+</code></pre>
+</div>
+<p>
+Change master to whatever branch you want to push your changes to.
+</p>
+
+<p>
+If you have not cloned an existing repository and want to connect your repository to a remote server, you need to add it with
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git remote add origin http://github.com/user/repository
+</code></pre>
+</div>
+
+<p>
+Now you are able to push your changes to the selected remote server
+</p>
+
+</section>
+<section id="slide-org6538525">
+<h3 id="org6538525">Branching</h3>
+<p>
+Branches are used to develop features isolated from each other. The <b>master</b> branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion.
+</p>
+
+
+<div class="figure">
+<p><img src="./figures/branches.png" alt="branches.png" />
+</p>
+</div>
+
+<p>
+Create a new branch named "feature" and switch to it using
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git checkout -b feature
+</code></pre>
+</div>
+
+<p>
+Switch back to master
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git checkout master
+</code></pre>
+</div>
+
+<p>
+And delete the branch again
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git branch -d feature
+</code></pre>
+</div>
+
+<p>
+To determine on which branch are you working on, use
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git branch
+</code></pre>
+</div>
+
+<p>
+A branch is not available to others unless you push the branch to your remote repository
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git push origin feature
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org77e4cde">
+<h3 id="org77e4cde">Update &amp; merge</h3>
+<p>
+To update your local repository to the newest commit, execute
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git pull
+</code></pre>
+</div>
+<p>
+in your working directory to fetch and merge remote changes.
+</p>
+
+<p>
+To merge another branch into your active branch (e.g. master), use
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git merge branch_name
+</code></pre>
+</div>
+<p>
+in both cases git tries to auto-merge changes.
+</p>
+
+</section>
+<section >
+
+<p>
+Unfortunately, this is not always possible and results in conflicts. You are responsible to merge those conflicts manually by editing the files shown by git.
+</p>
+
+<p>
+After changing, you need to mark them as merged with
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git add filename
+</code></pre>
+</div>
+<p>
+before merging changes, you can also preview them by using
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git diff source_branch target_branch
+</code></pre>
+</div>
+
+<p>
+Finally, you have to make a commit corresponding to this merge
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git commit -m "merging branch X"
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgdf3577f">
+<h3 id="orgdf3577f">Log</h3>
+<p>
+In its simplest form, you can study repository history using
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git log
+</code></pre>
+</div>
+
+<p>
+You can add a lot of parameters to make the log look like what you want. To see only the commits of a certain author:
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git log --author=bob
+</code></pre>
+</div>
+
+<p>
+Or maybe you want to see an ASCII art tree of all the branches, decorated with the names of tags and branches:
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git log --graph --oneline --decorate --all
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orge30b8c0">
+<h3 id="orge30b8c0">Replace local changes</h3>
+<p>
+In case you did something wrong, you can replace local changes using the command
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git checkout -- filename
+</code></pre>
+</div>
+<p>
+This <b>replaces the changes in your working tree with the last content in HEAD</b>.
+Changes already added to the index, as well as new files, will be kept.
+</p>
+
+<p>
+If you instead want to drop all your local changes and commits, fetch the latest history from the server and point your local master branch at it like this
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git fetch origin
+git reset --hard origin/master
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org3652d2d">
+<h3 id="org3652d2d">Configuration</h3>
+<p>
+First, find where is your configuration file using:
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git config --list --show-origin
+</code></pre>
+</div>
+<p>
+On windows, this should be located in <code>c:\Users\UserName\.gitconfig</code>.
+</p>
+
+<p>
+Use colorful git output
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git config color.ui true
+</code></pre>
+</div>
+
+<p>
+Show log on just one line per commit
+</p>
+<div class="org-src-container">
+
+<pre><code class="bash" >git config format.pretty oneline
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2936acd">
+<h2 id="org2936acd">Ressources</h2>
+<p>
+<a href="http://rogerdudler.github.io/git-guide/">http://rogerdudler.github.io/git-guide/</a>
+<a href="http://marklodato.github.io/visual-git-guide/index-en.html">http://marklodato.github.io/visual-git-guide/index-en.html</a>
+<a href="https://programminghistorian.org/en/lessons/getting-started-with-github-desktop">https://programminghistorian.org/en/lessons/getting-started-with-github-desktop</a>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>

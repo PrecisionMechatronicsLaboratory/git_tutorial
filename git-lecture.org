@@ -1,0 +1,263 @@
+#+TITLE: Git Quick Start
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_THEME: solarized
+#+REVEAL_TRANS: default
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+
+* Why use version control software?
+
+#+REVEAL_HTML: <img class="stretch" src="figures/phd101212s_2018-11-28_21-45-04.png">
+
+* What is Git ?
+Git is a *version control system* developed by Linus Torvalds in 2005.
+
+- It helps you manage the changes of your code over time
+- It *keeps track of every modification of your code over time*
+- If a mistake is made, you can always compare with an earlier version of the code and fix the mistake
+- It also *permits multiple people working on the same files at the same time*
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <img class="stretch" src="figures/tRfgX_2018-11-28_21-23-44.png">
+
+* Central Repository
+Repositories are where your code is stored online. These repositories can be private or public.
+
+You can use some free services to store your git repositories: [[https://about.gitlab.com/][Gitlab]] and [[https://bitbucket.org/][Bitbucket]] (free public and private repositories), [[https://desktop.github.com/][Github]] (free public and paying private repositories).
+
+You can even store your repositories on your own server (a NAS for instance).
+
+** Private repositories with Github
+Go on [[https://github.com/new][github]] and create an account.
+
+If you want to have private repositories, you can ask for a free student pack [[https://education.github.com/pack][here]] using your ulg/ulb account.
+
+Create a repository [[https://github.com/new][here]] and choose it to be private. That way only thoose that are invited to collaborate with you will see this repository.
+
+** Public repositories for the PML team
+All the repositories shared with the PML members should appear [[https://github.com/PrecisionMechatronicsLaboratory][here]].
+
+You can clone them to your own computer, work with the files and push your changes to the online repository.
+
+* How to install Git?
+** 3 options
+- with the *command line* => you have to install git [[https://git-scm.com/][here]]
+- with a *graphical software* => [[https://desktop.github.com/][Github Desktop]] is a good option
+- *directly on Matlab* => you still need to install git [[https://git-scm.com/][here]]
+
+** Github Desktop Setup
+Download the git software [[https://desktop.github.com/][here]].
+
+Run the software, login to your github account and you should be good to go.
+
+* How does git works?
+** Commit / Working directory / Staging Area
+
+[[file:figures/areas_2018-11-28_22-15-00.png]]
+
+#+REVEAL: split
+
+[[file:figures/lifecycle_2018-11-28_22-15-58.png]]
+
+** What is a commit?
+
+[[file:01_2018-11-28_22-30-58.svg]]
+
+** What are branches?
+
+[[file:Branch-1_2018-11-28_22-29-25.png]]
+
+** Merge / Conflict
+
+** Repository / Push / Pull
+
+[[file:figures/centralized_workflow_2018-11-28_22-17-15.png]]
+
+** Git Push
+
+** Git Pull
+
+* Tips
+** Readme File
+You can add a =readme.md= at the root of your working folder to add some documentation about your project.
+
+This will be displayed when someone goes to the project on github.
+
+** Gitignore File
+You can add a =.gitignore= text file in your working folder to tell git to ignore some files that you don't want to share with the others.
+
+You can find some premade gitignore files on [[https://github.com/github/gitignore/blob/master/TeX.gitignore][github]] (for [[https://github.com/github/gitignore/blob/master/Global/Matlab.gitignore][Matlab]] and [[https://github.com/github/gitignore/blob/master/TeX.gitignore][LaTeX]])
+
+* Workflow
+** Add one of you folder to
+
+** Use of branches
+Generally, we should never work directly on the
+
+** Managing Conflics
+
+* Using git with the command line
+This is based on the following website:
+http://rogerdudler.github.io/git-guide/
+
+** Create a new repository
+Create a new directory, open it and perform a
+#+BEGIN_SRC bash
+git init
+#+END_SRC
+to create a new git repository.
+
+** Checkout a repository
+Create a working copy of a remote repository by running the command
+#+BEGIN_SRC bash
+git clone http://github.com/username/repository-name
+#+END_SRC
+
+** Workflow
+Your local repository consists of three "trees" maintained by git. the first one is your Working Directory which holds the actual files. the second one is the Index which acts as a staging area and finally the HEAD which points to the last commit you've made.
+
+[[./figures/trees.png]]
+
+** Add & commit
+You can propose changes (add it to the *Index*) using
+#+BEGIN_SRC bash
+# To add one particular file
+git add filename
+# To add everything
+git add *
+#+END_SRC
+This is the first step in the basic git workflow. To actually commit these changes use
+#+BEGIN_SRC bash
+git commit -m "Commit message"
+#+END_SRC
+Now the file is committed to the *HEAD*, but not in your remote repository yet.
+
+** Pushing changes
+Your changes are now in the *HEAD* of your local working copy.
+To send those changes to your remote repository, execute
+#+BEGIN_SRC bash
+git push origin master
+#+END_SRC
+Change master to whatever branch you want to push your changes to.
+
+If you have not cloned an existing repository and want to connect your repository to a remote server, you need to add it with
+#+BEGIN_SRC bash
+git remote add origin http://github.com/user/repository
+#+END_SRC
+
+Now you are able to push your changes to the selected remote server
+
+** Branching
+Branches are used to develop features isolated from each other. The *master* branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion.
+
+[[./figures/branches.png]]
+
+Create a new branch named "feature" and switch to it using
+#+BEGIN_SRC bash
+git checkout -b feature
+#+END_SRC
+
+Switch back to master
+#+BEGIN_SRC bash
+git checkout master
+#+END_SRC
+
+And delete the branch again
+#+BEGIN_SRC bash
+git branch -d feature
+#+END_SRC
+
+To determine on which branch are you working on, use
+#+BEGIN_SRC bash
+git branch
+#+END_SRC
+
+A branch is not available to others unless you push the branch to your remote repository
+#+BEGIN_SRC bash
+git push origin feature
+#+END_SRC
+
+** Update & merge
+To update your local repository to the newest commit, execute
+#+BEGIN_SRC bash
+git pull
+#+END_SRC
+in your working directory to fetch and merge remote changes.
+
+To merge another branch into your active branch (e.g. master), use
+#+BEGIN_SRC bash
+git merge branch_name
+#+END_SRC
+in both cases git tries to auto-merge changes.
+
+#+REVEAL: split
+
+Unfortunately, this is not always possible and results in conflicts. You are responsible to merge those conflicts manually by editing the files shown by git.
+
+After changing, you need to mark them as merged with
+#+BEGIN_SRC bash
+git add filename
+#+END_SRC
+before merging changes, you can also preview them by using
+#+BEGIN_SRC bash
+git diff source_branch target_branch
+#+END_SRC
+
+Finally, you have to make a commit corresponding to this merge
+#+BEGIN_SRC bash
+git commit -m "merging branch X"
+#+END_SRC
+
+** Log
+In its simplest form, you can study repository history using
+#+BEGIN_SRC bash
+git log
+#+END_SRC
+
+You can add a lot of parameters to make the log look like what you want. To see only the commits of a certain author:
+#+BEGIN_SRC bash
+git log --author=bob
+#+END_SRC
+
+Or maybe you want to see an ASCII art tree of all the branches, decorated with the names of tags and branches:
+#+BEGIN_SRC bash
+git log --graph --oneline --decorate --all
+#+END_SRC
+
+** Replace local changes
+In case you did something wrong, you can replace local changes using the command
+#+BEGIN_SRC bash
+git checkout -- filename
+#+END_SRC
+This *replaces the changes in your working tree with the last content in HEAD*.
+Changes already added to the index, as well as new files, will be kept.
+
+If you instead want to drop all your local changes and commits, fetch the latest history from the server and point your local master branch at it like this
+#+BEGIN_SRC bash
+git fetch origin
+git reset --hard origin/master
+#+END_SRC
+
+** Configuration
+First, find where is your configuration file using:
+#+BEGIN_SRC bash
+git config --list --show-origin
+#+END_SRC
+On windows, this should be located in =c:\Users\UserName\.gitconfig=.
+
+Use colorful git output
+#+BEGIN_SRC bash
+git config color.ui true
+#+END_SRC
+
+Show log on just one line per commit
+#+BEGIN_SRC bash
+git config format.pretty oneline
+#+END_SRC
+* Ressources
+https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
+http://rogerdudler.github.io/git-guide/
+http://marklodato.github.io/visual-git-guide/index-en.html
+https://programminghistorian.org/en/lessons/getting-started-with-github-desktop
